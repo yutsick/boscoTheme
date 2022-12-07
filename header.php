@@ -1,5 +1,9 @@
 <?php wp_head(); ?>
+<?php 
+$logo_id = get_theme_mod('custom_logo');
+$logo_img = wp_get_attachment_image_src($logo_id,'full');
 
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,7 +20,8 @@
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">
-                    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+                    <a class="navbar-brand" href="/">
+                        <img src="<?php echo $logo_img[0]; ?>" alt="" class="custom-logo"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <!-- nav menu -->
                         <?php 

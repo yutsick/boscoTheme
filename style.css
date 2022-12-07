@@ -43,11 +43,15 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
   margin-bottom: 0 !important;
 }
 
-.carousel{
+.carousel {
   max-height: 650px;
 }
 
-.slider-img{
+.slider-img {
   height: 100%;
   object-fit: cover;
+}
+
+.custom-logo {
+  width: 125px;
 }
