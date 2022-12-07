@@ -22,4 +22,32 @@ Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
 
+.my-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
+.author_ava {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.myform {
+  display: inline-block !important;
+  width: auto !important;
+}
+
+.wpcf7-form {
+  margin-bottom: 0 !important;
+}
+
+.carousel{
+  max-height: 650px;
+}
+
+.slider-img{
+  height: 100%;
+  object-fit: cover;
+}

@@ -50,6 +50,7 @@ function bosco_train_theme_setup() {
 	register_nav_menus(
 		array(
 			'top_menu' => esc_html__( 'Top menu', 'bosco-train-theme' ),
+			'bottom_menu' => esc_html__( 'Bottom menu', 'bosco-train-theme' ),
 		)
 	);
 
@@ -196,3 +197,45 @@ function register_navwalker(){
 	}
 }
 add_action( 'after_setup_theme', 'register_navwalker' );
+
+add_filter( 'nav_menu_link_attributes', 'prefix_bs5_dropdown_data_attribute', 20, 3 );
+
+function prefix_bs5_dropdown_data_attribute( $atts, $item, $args ) {
+    if ( is_a( $args->walker, 'WP_Bootstrap_Navwalker' ) ) {
+        if ( array_key_exists( 'data-toggle', $atts ) ) {
+            unset( $atts['data-toggle'] );
+            $atts['data-bs-toggle'] = 'dropdown';
+        }
+    }
+    return $atts;
+}
+
+if( function_exists('acf_add_options_page') ) {
+    
+    acf_add_options_page(array(
+        'page_title'    => 'Основні налаштування',
+        'menu_title'    => 'Налаштування теми',
+        'menu_slug'     => 'theme-general-settings',
+        'capability'    => 'edit_posts',
+        'redirect'      => false
+    ));
+    
+}
+
+function portfolio_custom_post_type() {
+	register_post_type('portfolio',
+		array(
+			'labels'      => array(
+				'name'          => __('Portfolio', 'textdomain'),
+				'singular_name' => __('Portfolio', 'textdomain'),
+			),
+				'public'      => true,
+				'has_archive' => true,
+				'menu_position'	=> 5,
+				'menu_icon'			=> 'dashicons-admin-multisite',
+				'supports'			=> ['title', 'editor','thumbnail','excerpt'],
+				'show_in_rest'	=> true,
+		)
+	);
+}
+add_action('init', 'portfolio_custom_post_type');

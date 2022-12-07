@@ -213,9 +213,8 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			// If the item has_children add atts to <a>.
 			if ( $this->has_children && 0 === $depth ) {
 				$atts['href']          = '#';
-				$atts['data-bs-toggle']   = 'dropdown';
+				$atts['data-toggle']   = 'dropdown';
 				$atts['aria-expanded'] = 'false';
-				$atts['role']	= 'button';
 				$atts['class']         = 'dropdown-toggle nav-link';
 				$atts['id']            = 'menu-item-dropdown-' . $item->ID;
 			} else {
